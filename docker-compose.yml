@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  archimedes:
+    image: nginx:alpine
+    container_name: archimedes
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      # your text file on the host
+      - /home/stereosonic/data/archimedes.txt:/data/archimedes.txt:ro
+      # your custom nginx config (must be in the same dir as this compose file)
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
